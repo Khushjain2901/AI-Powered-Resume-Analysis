@@ -26,6 +26,16 @@ from prompts import (
 st.set_page_config(page_title="AI Resume Reviewer", page_icon="📄", layout="wide")
 load_dotenv(override=False)
 
+# Map Streamlit secrets to environment variables in hosted deployments
+try:
+    if hasattr(st, "secrets"):
+        if "OPENAI_API_KEY" in st.secrets and not os.getenv("OPENAI_API_KEY"):
+            os.environ["OPENAI_API_KEY"] = str(st.secrets["OPENAI_API_KEY"]) or ""
+        if "ANTHROPIC_API_KEY" in st.secrets and not os.getenv("ANTHROPIC_API_KEY"):
+            os.environ["ANTHROPIC_API_KEY"] = str(st.secrets["ANTHROPIC_API_KEY"]) or ""
+except Exception:
+    pass
+
 # Global vibrant styling
 st.markdown(
     """
