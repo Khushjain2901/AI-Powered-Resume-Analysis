@@ -18,11 +18,11 @@ dist/
 .eggs/
 
 # Environments
-# .env
-# .env.*
-# .venv/
-# venv/
-# env/
+.env
+.env.*
+.venv/
+venv/
+env/
 
 # Tooling/IDE
 .vscode/
